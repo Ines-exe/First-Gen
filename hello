@@ -1,6 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> <!-- idk--> 
-  </head>
+<head>
+  <title>Basic Web Page</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <h1>Resources for First Generation Students</h1>
+
+<h3> What would you like to find? </h3>
+Financial Aid: <input type="checkbox" id="myCheck1" value="financial"><br>
+Mental health Resources: <input type="checkbox" id="myCheck2" value="mental"><br>
+Scholarship oppurtunities: <input type="checkbox" id="myCheck3" value="Scholarships">
+<br> <br>
+<button onclick="checkCheckbox()">Submit</button> <br>
+
+<h4 style="color:green" id="result"></h4> 
+<h4 style="color:red" id="error"></h4> 
+
+<script>
+function checkCheckbox() {
+var fin = document.getElementById("myCheck1");
+      var men = document.getElementById("myCheck2");
+      var sch = document.getElementById("myCheck3");
+
+      if (fin.checked && men.checked && sch.checked) {
+        // Redirect to page with both resources
+        window.location.href = "all.html";
+      } else if (fin.checked) {
+        // Redirect to financial resources page
+          if(men.checked){
+            window.location.href = "finmen.html";
+          }
+          else if(sch.checked){
+            window.location.href= "finsch.html";
+          }
+          else{
+        window.location.href = "financial.html";
+          }
+      } else if (men.checked) {
+        // Redirect to college resources page
+        if(sch.checked){
+          window.location.href= "mensch.html";
+        }
+        else{
+        window.location.href = "mental.html";
+        }
+      } 
+      else if (sch.checked){
+        window.location.href= "scholarship.html";
+      }
+      else {
+        document.getElementById("error").innerHTML = "*Please mark any of the checkboxes";
+        document.getElementById("result").innerHTML = "";
+  }
+}
+</script>
+
+  <script src="script.js"></script>
+
+    <nav>
+    <a href= "./extra.html"> Extra Resources</a>
+    </nav>
+
+</body>
 </html>
